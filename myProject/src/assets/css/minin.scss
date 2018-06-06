@@ -1,0 +1,60 @@
+@mixin myAnimation($name, $duration, $direction){
+  animation:$name $duration $direction;
+  -moz-animation:$name $duration $direction; /* Firefox */
+  -webkit-animation:$name $duration $direction; /* Safari and Chrome */
+  -o-animation:$name $duration $direction; /* Opera */
+}
+@mixin myRadius($px){
+  border-radius: $px;
+  -webkit-border-radius: $px;
+  -moz-border-radius: $px;
+  -ms-border-radius: $px;
+  -o-border-radius: $px;
+}
+@mixin boxShadow($shadow1,$shadow2,$shadow3){
+  box-shadow: $shadow1,$shadow2,$shadow3;
+  -webkit-box-shadow: $shadow1,$shadow2,$shadow3;
+  -moz-box-shadow: $shadow1,$shadow2,$shadow3;
+  -ms-box-shadow: $shadow1,$shadow2,$shadow3;
+  -o-box-shadow: $shadow1,$shadow2,$shadow3;
+}
+@mixin myBackground($image1,$image2,$image3){
+  background-image: -moz-linear-gradient($image1,$image2,$image3);
+  background-image: -webkit-linear-gradient($image1,$image2,$image3);
+  background-image: -ms-linear-gradient($image1,$image2,$image3);
+}
+@mixin textShadow($shadow){
+  text-shadow: $shadow;
+  -webkit-text-shadow: $shadow;
+  -moz-text-shadow: $shadow;
+  -ms-text-shadow: $shadow;
+  -o-text-shadow: $shadow;
+}
+@mixin myKeyframes($name){
+  @keyframes #{$name}
+  {
+    @content
+  }
+
+  @-moz-keyframes #{$name} /* Firefox */
+  {
+    @content
+  }
+
+  @-webkit-keyframes #{$name} /* Safari and Chrome */
+  {
+    @content
+  }
+
+  @-o-keyframes #{$name} /* Opera */
+  {
+    @content
+  }
+}
+@mixin myTransition($transition, $duration){
+  transition: $transition $duration;
+  -webkit-transition: $transition $duration;
+  -moz-transition: $transition $duration;
+  -ms-transition: $transition $duration;
+  -o-transition: $transition $duration;
+}

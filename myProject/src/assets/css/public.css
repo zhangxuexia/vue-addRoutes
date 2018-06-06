@@ -1,0 +1,154 @@
+html, body, blockquote, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, a, img, label, input, legend, li, ol, p, pre, td, textarea, th, ul, table, tr {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+body, button, input, select, textarea {
+    font: 12px/1.5 "Microsoft Yahei", Arial, Helvetica, sans-serif;
+    color: #444443;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+}
+
+input {
+    padding: 0 5px;
+}
+
+textarea {
+    padding: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+    max-height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #444443;
+}
+
+em {
+    font-style: normal;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+input, textarea, button {
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+.none {
+    display: none !important;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    content: ".";
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+    overflow: hidden;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right !important;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}
+
+.ellipse {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inline {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+.layui-col-xs6{
+  width:50%;
+  float:left;
+}
+ /*
+ 消息框自定义样式
+ */
+.my-el-message{
+  position:fixed!important;
+  top:50%!important;
+}
+.my-message{
+  top: 63px!important;
+  z-index:2000!important;
+}
+.el-checkbox__input.is-disabled.is-checked+span.el-checkbox__label{
+  color:#000!important;
+}
+.el-radio__input.is-disabled.is-checked+span.el-radio__label{
+  color:#000!important;
+}
+.el-button--success{
+  background-color: #009688!important;
+  border-color: #009688!important;
+}
+.el-button--success:hover{
+  opacity: .8;
+  filter:Alpha(opacity=80);
+}
+.chose-file .el-upload-list{
+  max-width:160px;
+}
+
