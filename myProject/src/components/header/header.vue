@@ -45,7 +45,7 @@ export default {
     },
     // 退出登录
     loginOut () {
-      this.apiPost('/index.php/api/user/logout').then((response) => {
+      this.apiPost('/user/logout').then((response) => {
         this.messageBox('操作成功', 'success')
         this.$store.state.userInfo = {} // 清除vuex储存的用户信息
         this.$store.state.navList = []

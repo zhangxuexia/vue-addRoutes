@@ -28,11 +28,11 @@ export function getForm (formId) {
 export function dealList (list) {
   list.map((item) => {
     if (item.status === '0') {
-      item.statusStr = '<span  class="blue">服务中</span>'
+      item.statusStr = '<span  class="blue">状态1</span>'
     } else if (item.status === '1') {
-      item.statusStr = '<span  class="red">事故中</span>'
+      item.statusStr = '<span  class="red">状态2</span>'
     } else {
-      item.statusStr = '<span  class="green">已完成</span>'
+      item.statusStr = '<span  class="green">状态3</span>'
     }
   })
   return list
@@ -40,15 +40,15 @@ export function dealList (list) {
 export function dealStatus (list) {
   list.map((item) => {
     if (item.status === '0' || item.status === '1') {
-      item.statusStr = '<span  class="blue">体检中</span>'
+      item.statusStr = '<span  class="blue">状态1</span>'
     } else if (item.status === '2') {
-      item.statusStr = '<span  class="red">未通过</span>'
+      item.statusStr = '<span  class="red">状态2</span>'
     } else if (item.status === '3') {
-      item.statusStr = '<span  class="green">已通过</span>'
+      item.statusStr = '<span  class="green">状态3</span>'
     } else if (item.status === '4') {
-      item.statusStr = '<span class="red">未完成</span>'
+      item.statusStr = '<span class="red">状态4</span>'
     } else if (item.status === '5') {
-      item.statusStr = '<span class="green">已完成</span>'
+      item.statusStr = '<span class="green">状态5</span>'
     }
   })
   return list

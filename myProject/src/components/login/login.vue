@@ -1,10 +1,7 @@
 <template>
   <div class="login">
     <div class="login-bg">
-      <div class="login-title">
-        <img src="../../assets/images/insurance-logo.png" />
-      </div>
-       <div class="login-form fr">
+       <div class="login-form">
          <div class=" tc login-tit">登录</div>
           <form onsubmit="return false" id="login">
      <div class="item-row">
@@ -19,15 +16,6 @@
        <div :class="[{'error': errors.has('passWord')},'inline item-input-block']">
          <input type="text" class="item-input" v-model="passWord"  name="passWord" data-vv-as="密码"  v-validate="'required|password'" placeholder="请输入密码">
          <span class="auThen-error">{{ errors.first('passWord') }}</span>
-       </div>
-     </div>
-     <div class="item-row">
-       <div class="item-label inline"><label><em>*</em>验证码：</label></div>
-       <div :class="[{'error': errors.has('verificationCode')},'inline item-input-block']">
-         <div class="fl code-input"><input type="text" class="item-input "   name="verificationCode" data-vv-as="验证码"  v-validate="'required'" placeholder="请输入验证码">
-         <span class="auThen-error">{{ errors.first('verificationCode') }}</span>
-         </div>
-         <div class="fl code-div"><img :src="code"><span class="login-number" @click="fresh">刷新</span></div>
        </div>
      </div>
      <div class="item-row login-btn">
@@ -46,7 +34,6 @@
 <script>
 import {getForm} from 'common/util'
 import config from 'common/config'
-let Base64 = require('js-base64').Base64
 export default {
   data () {
     return {
@@ -58,11 +45,8 @@ export default {
     submit () {
       this.$validator.validate().then(result => {
         if (result) {
-          let old = this.passWord
-          old = Base64.encode(old)
           let query = getForm('login')
-          query.passWord = old
-          this.apiPost('/index.php/api/user/login', query, true).then((response) => {
+          this.apiPost('/user/login', query, true).then((response) => {
             if (response.status === '0') {
               this.messageBox('操作成功', 'success')
               this.$router.push('/home/index')
@@ -86,7 +70,6 @@ export default {
   @import  './../../assets/css/minin';
     .login{
       .login-bg{
-        background: url(../../assets/images/login-bg.jpg) no-repeat center bottom;
           .login-title{
             position:relative;
             top:100px;
@@ -107,9 +90,10 @@ export default {
           .login-form{
             background-color:rgba(252,252,254,0.8);
             color:#094788;
-            position:relative;
+          /*  position:relative;
             top:60px;
-            right:10%;
+            right:10%;*/
+            margin:auto;
             width:580px;
             min-height:300px;
             .item-row{

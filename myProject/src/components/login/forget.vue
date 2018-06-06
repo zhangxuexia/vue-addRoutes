@@ -70,7 +70,6 @@
 </template>
 
 <script>
-let Base64 = require('js-base64').Base64
 export default {
   data () {
     return {
@@ -108,7 +107,7 @@ export default {
       this.$validator.validate('userName').then((result) => {
         if (result) {
           let query = {userName: this.form.userName}
-          this.apiPost('/index.php/api/user/forgetPassword', query).then((response) => {
+          this.apiPost('/user/forgetPassword', query).then((response) => {
             this.forget.sendInfo = response.data.mobile
             this.timer() // 倒计时
           })
@@ -120,7 +119,7 @@ export default {
       this.$validator.validate().then((result) => {
         if (result) {
           let query = {userName: this.form.userName, verificationCode: this.form.verificationCode}
-          this.apiPost('/index.php/api/user/check', query).then((response) => {
+          this.apiPost('/user/check', query).then((response) => {
             this.forget.first = false
             this.forget.second = true
           })
@@ -131,10 +130,8 @@ export default {
     submit () {
       this.$validator.validate().then((result) => {
         if (result) {
-          let old = this.form.password
-          old = Base64.encode(old)
-          let query = {userName: this.form.userName, password: old}
-          this.apiPost('/index.php/api/user/setPassword', query).then((response) => {
+          let query = {userName: this.form.userName}
+          this.apiPost('/user/setPassword', query).then((response) => {
             this.forget.second = false
             this.forget.third = true
           })
@@ -169,7 +166,6 @@ export default {
 <style lang="scss" type="text/scss">
   .login{
     .forget-bg{
-      background: url(../../assets/images/forget-bg.jpg) no-repeat center bottom;
       .forget-form{
         color:#094788;
         width:462px;

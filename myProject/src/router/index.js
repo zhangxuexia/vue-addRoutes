@@ -10,128 +10,83 @@ const login = r => require.ensure([], () => r(require('@/components/login/login'
 const forget = r => require.ensure([], () => r(require('@/components/login/forget')), 'gorget')
 const user = r => require.ensure([], () => r(require('@/page/user/info')), 'user')
 const companyIndex = r => require.ensure([], () => r(require('@/page/index/company')), 'companyIndex')
-const serviceIndex = r => require.ensure([], () => r(require('@/page/index/service')), 'serviceIndex')
 const userIndex = r => require.ensure([], () => r(require('@/page/index/user')), 'userIndex')
 const userList = r => require.ensure([], () => r(require('@/page/policy/user/list')), 'userList')
 const policy = r => require.ensure([], () => r(require('@/page/policy/index')), 'policy')
-const repolicy = r => require.ensure([], () => r(require('@/page/policy/repolicy/list')), 'repolicy')
 const companyList = r => require.ensure([], () => r(require('@/page/policy/company/list')), 'companyList')
 const addCompany = r => require.ensure([], () => r(require('@/page/policy/company/add')), 'addCompany')
 const detailCompany = r => require.ensure([], () => r(require('@/page/policy/company/detail')), 'detailCompany')
-const serviceList = r => require.ensure([], () => r(require('@/page/policy/service/list')), 'serviceList')
-const detailService = r => require.ensure([], () => r(require('@/page/policy/service/detail')), 'detailService')
+
 
 let routes = [{path: '/login', component: login}, {path: '/forget', component: forget}, {path: '/', component: home}, {path: '/home', component: home, children: [{path: '/home/user', name: '个人中心', component: user}]}]
-/* 权限路由：role: 0:被保险人、1:保险专员、2:服务专员, nav: true可以渲染在导航栏 */
+/* 权限路由：role: 0:角色1，1:角色2, nav: true可以渲染在导航栏 */
 export const asyncRoutes = [
   {
     path: 'home',
     component: home,
     redirect: '/home/index',
-    meta: {role: ['0', '1', '2'], nav: false},
+    meta: {role: ['0', '1'], nav: false},
     children:
       [
         {
           path: '/home/index',
-          name: '保单概览',
+          name: '概览',
           component: companyIndex,
           meta: { role: ['1'], nav: true }
         },
         {
           path: '/home/index',
-          name: '保单概览',
-          component: serviceIndex,
-          meta: { role: ['2'], nav: true }
-        },
-        {
-          path: '/home/index',
-          name: '保单概览',
+          name: '概览',
           component: userIndex,
           meta: { role: ['0'], nav: true }
         },
         {
           path: '/policy',
-          name: '保单管理',
+          name: '列表管理',
           component: policy,
           redirect: '/policy/list',
           meta: { role: ['0'], nav: true },
           children: [
             {
               path: 'list',
-              name: '保单',
+              name: '列表',
               component: userList,
               meta: { role: ['0'], nav: true }
             }
           ]},
         {
           path: '/policy',
-          name: '保单管理',
+          name: '列表管理',
           component: policy,
           redirect: '/policy/company',
           meta: { role: ['1'], nav: true },
           children: [
             {
               path: '/policy/company',
-              name: '保单',
+              name: '列表',
               redirect: '/policy/company/list',
               component: policy,
               meta: { role: ['1'], nav: true },
               children: [
                 {
                   path: 'list',
-                  name: '保单',
+                  name: '列表',
                   component: companyList,
                   meta: { role: ['1'], nav: false }
                 },
                 {
                   path: 'detail/:policyNum',
-                  name: '保单详情',
+                  name: '列表详情',
                   component: detailCompany,
                   meta: { role: ['1'], nav: false }
                 },
                 {
                   path: 'add',
-                  name: '添加保单',
+                  name: '添加',
                   component: addCompany,
                   meta: { role: ['1'], nav: false }
                 }
-              ]},
-            {
-              path: '/policy/prelist',
-              name: '预保单',
-              component: repolicy,
-              meta: { role: ['1'], nav: true }
-            }
-          ]
-        },
-        {
-          path: '/policy',
-          name: '保单管理',
-          component: policy,
-          redirect: '/policy/company',
-          meta: { role: ['2'], nav: true },
-          children: [
-            {
-              path: '/policy/company',
-              name: '保单',
-              redirect: '/policy/company/list',
-              component: policy,
-              meta: { role: ['2'], nav: true },
-              children: [
-                {
-                  path: 'list',
-                  name: '保单',
-                  component: serviceList,
-                  meta: { role: ['2'], nav: false }
-                },
-                {
-                  path: 'detail/:policyNum',
-                  name: '保单详情',
-                  component: detailService,
-                  meta: { role: ['2'], nav: false }
-                }
-              ]
-            }
+              ]}
           ]
         }
       ]

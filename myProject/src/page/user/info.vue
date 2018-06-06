@@ -121,7 +121,7 @@ export default {
       this.$validator.validate().then(result => {
         if (result) {
           let query = getForm('info')
-          this.apiPost('/index.php/api/user/update', query).then((response) => {
+          this.apiPost('/user/update', query).then((response) => {
             this.messageBox('操作成功', 'success')
             let a = response.data
             this.info = a

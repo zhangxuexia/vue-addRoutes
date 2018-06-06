@@ -74,7 +74,7 @@ export default {
             let newP = this.password.newpassword
             newP = Base64.encode(newP)
             let query = {oldpassword: old, newpassword: newP}
-            this.apiPost('/index.php/api/user/resetPassword', query).then((response) => {
+            this.apiPost('/user/resetPassword', query).then((response) => {
               this.messageBox('密码修改成功,请重新登录', 'success')
               // this.cancel()
               let t = null

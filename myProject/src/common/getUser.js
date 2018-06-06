@@ -12,7 +12,7 @@ axios.defaults.transformRequest = [function (data) {
 }]
 export function getUserInfo () {
   return new Promise((resolve, reject) => {
-    axios.post(config.mockUrl + '/index.php/api/user/userDetail').then((response) => {
+    axios.post(config.mockUrl + '/user/userDetail').then((response) => {
       let a = response.data
       resolve(a)
     }).catch((response) => { /*  reject(response) */
