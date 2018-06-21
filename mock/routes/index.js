@@ -3,30 +3,36 @@ var router = express.Router();
 /* 权限路由：0:角色1、1:角色2 */
 /* GET home page. */
 //1.用户端 个人中心
+let login = false, role = false
 router.post('/php/public/user/userDetail', function(req, res, next) {
-    /* const query=req.body.name;
-    alert(query);*/
-    res.json({
-        "status": "1",
-        "data": {
-            "userName": "野渡",   //用户名
-            "mobile": "13355989898",      //联系方式
-            "logo": null,        //logo
-            "company": "百度",    //企业名称
-            "website":"www.1.com",//网址
-            "address":"北京",  //地址
-            "phone":"0530-7898787",         //企业电话
-            "businessLicense":"11er45345",  //营业执照
-            "orgCode":"123wer3453" ,     //企业组织代码
-            "userType":"0"
-        }
-    });
-
-
+   let user = {
+       "status": "1",
+       "data": {
+           "userName": "野渡",   //用户名
+           "mobile": "13355989898",      //联系方式
+           "logo": null,        //logo
+           "company": "百度",    //企业名称
+           "website":"www.1.com",//网址
+           "address":"北京",  //地址
+           "phone":"0530-7898787",         //企业电话
+           "businessLicense":"11er45345",  //营业执照
+           "orgCode":"123wer3453" ,     //企业组织代码
+           "userType":"0"
+       }
+   }
+    if(login){
+       user.status = "0";
+    }
+    if (role) {
+        user.data.userType = "1";
+    }
+    res.json(user);
 });
 router.post('/php/public/user/login', function(req, res, next) {
-    /* const query=req.body.name;
-    alert(query);*/
+    login = true;
+    if(req.body.userName === '456'){
+        role = true;
+    }
     res.json({
         "status": "0",
         "data": {
@@ -48,6 +54,8 @@ router.post('/php/public/user/login', function(req, res, next) {
 router.post('/php/public/user/logout', function(req, res, next) {
     /* const query=req.body.name;
     alert(query);*/
+    login = false;
+    role = false;
     res.json({
         "status": "0",
         "data": {

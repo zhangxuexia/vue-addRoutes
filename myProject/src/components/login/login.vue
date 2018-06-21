@@ -37,7 +37,6 @@ import config from 'common/config'
 export default {
   data () {
     return {
-      code: `${config.mockUrl}/index.php/captcha.html?${Math.random()}`,
       passWord: ''
     }
   },
@@ -57,9 +56,6 @@ export default {
           })
         }
       })
-    },
-    fresh () {
-      this.code = `${config.mockUrl}/index.php/captcha.html?${Math.random()}`
     }
   }
 

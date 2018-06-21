@@ -17,3 +17,8 @@ myProject:vue项目。登录权限设置，根据角色，动态添加路由
  npm install
 
  npm run dev
+
+ #用户名 密码
+ 角色1:123  a123456
+
+ 角色2:456  a123456

@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1 class="manage-body-tit">
-      管理2
-      <span>管理2</span>
+      管理1
+      <span>管理1</span>
     </h1>
     <div class="inline manage-top-body mb20">
       <div class="query-div clearfix">
